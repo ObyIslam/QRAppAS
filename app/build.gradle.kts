@@ -31,6 +31,11 @@ android {
     }
 }
 
+repositories{
+    google()
+    mavenCentral()
+}
+
 dependencies {
 
     implementation(libs.appcompat)
