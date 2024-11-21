@@ -29,10 +29,9 @@ public class MainActivity extends AppCompatActivity {
         etAddress = findViewById(R.id.etAddress);
         buttonScan = findViewById(R.id.buttonScan);
 
-        // Set up the button to start the QR code scanner
+
         buttonScan.setOnClickListener(view -> startQRScanner());
 
-        // Open the website when clicked
         etAddress.setOnClickListener(view -> {
             String url = etAddress.getText().toString();
             if (!url.isEmpty() && url.startsWith("http")) {
@@ -44,18 +43,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Function to start the QR Code scanner
     private void startQRScanner() {
-        Intent intent = new Intent(MainActivity.this, CaptureActivity.class);  // Start CaptureActivity for ZXing scanner
-        startActivityForResult(intent, 0);  // Start the QR code scanner activity
+        Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+        startActivityForResult(intent, 0);
     }
 
-    // Handle the result of the QR code scan
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Parse the result of the QR code scan
+
         if (resultCode == RESULT_OK) {
             String result = data.getStringExtra("SCAN_RESULT");
 
